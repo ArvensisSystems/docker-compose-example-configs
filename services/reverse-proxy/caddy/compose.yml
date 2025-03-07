@@ -1,0 +1,30 @@
+# Caddy service configuration
+caddy:
+  image: caddy:2.9-alpine
+  container_name: caddy
+  restart: unless-stopped
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./config/caddy:/etc/caddy:ro
+    - caddy-data:/data
+  environment:
+    - CADDY_INGRESS_NETWORK=web
+  healthcheck:
+    test:
+      [
+        "CMD",
+        "wget",
+        "--no-verbose",
+        "--tries=1",
+        "--spider",
+        "http://localhost:80",
+      ]
+    interval: 30s
+    timeout: 5s
+    retries: 3
+    start_period: 5s
+
+volumes:
+  caddy-data:

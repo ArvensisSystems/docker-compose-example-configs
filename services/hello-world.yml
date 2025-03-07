@@ -1,0 +1,4 @@
+services:
+  hello-world:
+    image: crccheck/hello-world
+    restart: unless-stopped

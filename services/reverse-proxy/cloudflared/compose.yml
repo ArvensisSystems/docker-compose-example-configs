@@ -1,0 +1,9 @@
+# If you use cloudflared, your reverse proxy is configured in the Cloudflare Zero Trust Dashboard.
+
+services:
+  cf-tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}

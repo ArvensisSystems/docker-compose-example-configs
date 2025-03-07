@@ -1,0 +1,30 @@
+# Global options
+{
+    # Email used for Let's Encrypt
+    email youremail@example.com
+    
+    # Use the staging endpoint while testing
+    # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+example.com {
+    reverse_proxy hello-world:8000
+}
+
+# Example virtual host configuration
+# example.com {
+#     root * /srv/www/example.com
+#     file_server
+#     
+#     # Enable HTTPS automatically
+#     tls youremail@example.com
+#     
+#     # Compress responses
+#     encode gzip zstd
+#     
+#     # Log requests to stdout
+#     log {
+#         output stdout
+#         format console
+#     }
+# }

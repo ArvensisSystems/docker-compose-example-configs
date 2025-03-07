@@ -1,0 +1,8 @@
+version: '3.8'
+
+include:
+  # Choose either Caddy or cloudflared. If you are using Caddy, your domain name must point to the server's IP.
+  # - services/reverse-proxy/caddy/compose.yml
+  - services/reverse-proxy/cloudflared/compose.yml
+  - services/hello-world.yml
+  - services/minecraft.yml
